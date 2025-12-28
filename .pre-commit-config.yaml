@@ -1,0 +1,58 @@
+# REQ.PROJECT: This repository SHOULD include a .pre-commit-config.yaml when collaborative quality gates are required.
+# WHY: Provide fast, consistent local quality checks aligned with CI, using uv/uvx for reproducibility.
+# ALT: Projects may rely on CI-only checks, but local pre-commit reduces cycle time and prevents avoidable churn.
+# CUSTOM: Update hook set and enforcement level as organizational standards evolve; keep hook ids stable.
+# USAGE:
+#   Install:
+#     uvx pre-commit install
+#
+#    Update hooks:
+#      uvx pre-commit autoupdate
+#
+#    Run all checks (may require two passes if autofixers run):
+#      uvx pre-commit run --all-files
+---
+# WHY: Don't format or lint generated artifacts and local caches.
+exclude: |
+  (?x)^(
+    \.DS_Store|
+    \.coverage|
+    \.ipynb_checkpoints/|
+    \.mypy_cache/|
+    \.nox/|
+    \.pytest_cache/|
+    \.ruff_cache/|
+    \.tox/|
+    \.venv/|
+    .*\.(egg-info)/|
+    build/|
+    coverage\.xml|
+    dist/|
+    htmlcov/|
+    node_modules/|
+    site/
+  )
+
+repos:
+
+  # === LOCAL HOOKS (UV-BASED, add packages to pyproject.toml) ===
+  - repo: local
+    hooks:
+
+      # === BASELINE CHECKS ===
+
+      - id: B1-validate-pyproject
+        name: B1) Validate pyproject
+        entry: uvx validate-pyproject
+        language: system
+        pass_filenames: false
+        files: ^pyproject\.toml$
+
+
+  # === EXTERNAL REPOS ===
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.9
+    hooks:
+      - id: actionlint
+        name: B2) Actionlint (GitHub Actions linter)
+        files: ^\.github/workflows/.*\.ya?ml$

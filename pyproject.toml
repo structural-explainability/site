@@ -1,0 +1,28 @@
+[project]
+name = "structural-explainability-site"
+version = "0.0.0"
+description = "Organization website for Structural Explainability"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [
+  { name = "Structural Explainability", email = "info@structuralexplainability.org" }
+]
+dependencies = []
+
+[project.optional-dependencies]
+docs = [
+  "mike",
+  "mkdocs",
+  "mkdocs-material",
+  "mkdocs-static-i18n",
+  "pymdown-extensions>=10.14",
+]
+
+[project.urls]
+"Home" = "https://structural-explainability.github.io/site/"
+"Repo" = "https://github.com/structural-explainability/site"
+"Issues" = "https://github.com/structural-explainability/site/issues"
+
+[tool.uv]
+package = false

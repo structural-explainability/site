@@ -1,0 +1,71 @@
+# .github/workflows/deploy-docs.yml
+name: Docs Deploy (MkDocs Python)
+
+# WHY: Build and deploy documentation to GitHub Pages on pushes to main.
+# REQ: Repo Settings -> Pages -> Build and deployment -> Source:
+#      Deploy from a branch, Branch = gh-pages, Folder = /.
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write # WHY: Required to push to gh-pages
+
+env:
+  PYTHONUNBUFFERED: "1"
+  PYTHONIOENCODING: "utf-8"
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # === ASSEMBLE ===
+
+      - name: A1) Checkout
+        uses: actions/checkout@v6
+
+      - name: A2) Install uv (with caching)
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: A3) Pin Python version for consistency
+        run: uv python pin 3.12
+
+      - name: A4) Display versions
+        run: |
+          python --version
+          uv --version
+          uv pip list | head -n 50
+
+      - name: A5) Sync to install dependencies
+        run: uv sync --extra dev --extra docs --upgrade
+
+      # === BASELINE CHECKS ===
+
+      - name: B1) Fail fast if no MkDocs configuration
+        run: |
+          if [ -f "mkdocs.yml" ] || [ -f "mkdocs.yaml" ]; then
+            echo "MkDocs configuration found. Proceeding."
+          else
+            echo "ERROR: mkdocs.yml not found."
+            echo "If you do not want documentation deployment,"
+            echo "delete .github/workflows/deploy-docs.yml (or add mkdocs.yml)."
+            exit 1
+          fi
+
+      # === DEPLOY ===
+
+      - name: D1) Build docs (mkdocs --strict)
+        run: uv run mkdocs build --strict
+
+      - name: D2) Deploy to GitHub Pages (gh-pages)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: site

@@ -1,0 +1,99 @@
+# mkdocs.yml
+# Configuration file for MkDocs (Automated project documentation generator)
+
+site_name: structural-explainability
+site_url: https://structural-explainability.github.io/site/
+repo_url: https://github.com/structural-explainability/site
+site_description: Organization website.
+site_author: structural-explainability
+docs_dir: docs
+site_dir: site
+copyright: Copyright &copy; 2025 Structural Explainability
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/structural-explainability/site
+  languages:
+    - name: English
+      code: en
+      default: true
+    - name: Français
+      code: fr
+    - name: Ελληνικά
+      code: el
+
+theme:
+  name: material
+  features:
+    - navigation.expand
+    - navigation.sections # Group navigation items
+    - navigation.top # Back-to-top button
+    - search.suggest # Search suggestions as you type
+    - search.highlight # Highlight search terms
+    - content.code.copy # Copy button on code blocks
+    - toc.follow # Highlight current section in TOC
+
+  palette:
+    - scheme: default # Light/dark mode toggle
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - include-markdown
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src/python/src
+          options:
+            show_source: true
+            show_root_heading: true # Include module names
+            show_root_toc_entry: true # Include module in TOC
+            docstring_style: google # Professional docstring format
+            show_signature_annotations: true
+            separate_signature: true # Makes function signatures easier to read
+  - i18n:
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: fr
+          name: Français
+          build: false
+        - locale: el
+          name: Ελληνικά
+          build: false
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/ajv-formats/3.0.1/ajv-formats.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/ajv/8.17.1/ajv2020.bundle.js
+  - js/validator.js
+
+markdown_extensions:
+  - admonition # Note/Warning/Tip boxes
+  - codehilite # Syntax highlighting
+  - tables # Markdown tables
+  - toc:
+      permalink:
+       true # Clickable headers
+      toc_depth: 3
+  - pymdownx.superfences # Code blocks with syntax highlighting
+  - pymdownx.details # Collapsible sections
+  - pymdownx.inlinehilite # Inline code highlighting
+  - pymdownx.snippets # Include external files
+  - pymdownx.tabbed # Tabbed content
+
+nav:
+  - Site: index.md
+  - Home: en/index.md
