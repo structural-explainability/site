@@ -1,9 +1,9 @@
-# Project Documentation
+# Home
 
-Documentation for **structural-explainability**.
+Structural Explainability works on the design of 
+**neutral representational substrates**
+that preserve stable reference and accountability
+under persistent disagreement.
 
-Use the navigation menu to explore available content.
-
-This home page will always be served at `/`.
-
-To learn more, visit the [GitHub repository](https://github.com/civic-interconnect/civic-interconnect).
+The results are theoretical and constraint-based.
+They do not prescribe domain ontologies, policies, or implementations.

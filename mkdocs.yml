@@ -96,4 +96,25 @@ markdown_extensions:
 
 nav:
   - Site: index.md
+
   - Home: en/index.md
+  - Overview: en/overview.md
+
+  - Results:
+      - Neutral Substrate (P100): en/results/p100-neutral-substrate.md
+      - Identity Regimes (P200): en/results/p200-identity-regimes.md
+
+  - Constructions:
+      - Accountable Entities (AE): en/constructions/accountable-entities.md
+      - Exchange Protocol (EP): en/constructions/exchange-protocol.md
+      - Contextual Evidence & Explanations (CEE): en/constructions/cee.md
+      - Interpretation Boundary: en/constructions/interpretation-boundary.md
+
+  - Adoption:
+      - For implementers: en/adoption/implementers.md
+      - Standards mapping: en/adoption/standards-mapping.md
+      - FAQ: en/adoption/faq.md
+
+  - Governance:
+      - Annotation Standard: en/governance/annotations.md
+      - Licensing and citation: en/governance/licensing-and-citation.md
