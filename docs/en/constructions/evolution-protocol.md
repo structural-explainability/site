@@ -1,9 +1,9 @@
-# Exchange Protocol (EP)
+# Evolution Protocol (EP)
 
-The Exchange Protocol defines **neutral record structures**
-for representing accountable exchanges.
+The Evolution Protocol defines **neutral record structures**
+for representing accountable evolutions.
 
-It specifies entities, relationships, exchanges,
+It specifies entities, relationships, evolutions,
 and envelopes in a time-parametric, interpretation-agnostic form.
 
 ### Design Principle

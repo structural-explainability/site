@@ -1,6 +1,6 @@
 # Home
 
-Structural Explainability works on the design of 
+Structural Explainability works on the design of
 **neutral representational substrates**
 that preserve stable reference and accountability
 under persistent disagreement.

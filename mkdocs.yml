@@ -28,7 +28,7 @@ theme:
     - navigation.expand
     - navigation.sections # Group navigation items
     - navigation.top # Back-to-top button
-    - search.suggest # Search suggestions as you type
+    - search.suggest # Search suggestions while typing
     - search.highlight # Highlight search terms
     - content.code.copy # Copy button on code blocks
     - toc.follow # Highlight current section in TOC
@@ -85,8 +85,7 @@ markdown_extensions:
   - codehilite # Syntax highlighting
   - tables # Markdown tables
   - toc:
-      permalink:
-       true # Clickable headers
+      permalink: true # Clickable headers
       toc_depth: 3
   - pymdownx.superfences # Code blocks with syntax highlighting
   - pymdownx.details # Collapsible sections
@@ -106,7 +105,7 @@ nav:
 
   - Constructions:
       - Accountable Entities (AE): en/constructions/accountable-entities.md
-      - Exchange Protocol (EP): en/constructions/exchange-protocol.md
+      - Evolution Protocol (EP): en/constructions/evolution-protocol.md
       - Contextual Evidence & Explanations (CEE): en/constructions/cee.md
       - Interpretation Boundary: en/constructions/interpretation-boundary.md
 

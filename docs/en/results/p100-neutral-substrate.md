@@ -2,7 +2,7 @@
 
 This result establishes an impossibility theorem:
 
-> Any representational substrate that remains stable  
+> Any representational substrate that remains stable
 > under incompatible extensions must be pre-causal and pre-normative.
 
 The result constrains what may appear at the foundational layer
