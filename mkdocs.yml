@@ -76,7 +76,6 @@ plugins:
           build: false
 
 extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/ajv-formats/3.0.1/ajv-formats.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/ajv/8.17.1/ajv2020.bundle.js
   - js/validator.js
 
