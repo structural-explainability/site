@@ -8,7 +8,7 @@ site_description: Organization website.
 site_author: structural-explainability
 docs_dir: docs
 site_dir: site
-copyright: Copyright &copy; 2025 Structural Explainability
+copyright: Copyright &copy; 2025 Denise M. Case
 extra:
   social:
     - icon: fontawesome/brands/github

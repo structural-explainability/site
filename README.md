@@ -9,19 +9,17 @@
 This repository hosts the public-facing site built with MkDocs and deployed
 via GitHub Pages. It is docs-only and does not produce a Python package.
 
-## Install
+## Developer
 
-- uv
-- VS Code (recommended)
+Steps to run pre-commit locally. Install `uv`.
 
-## One-Time Setup
-
-Create a local environment and install dependencies.
+Initialize once:
 
 ```shell
 uv self update
 uv python pin 3.12
-uv venv
+uvx pre-commit install
+uvx pre-commit run --all-files
 
 # Windows:
 .venv\Scripts\activate
@@ -30,23 +28,24 @@ uv venv
 # source .venv/bin/activate
 
 uv sync --extra dev --extra docs --upgrade
-uvx pre-commit install
 ```
 
-## Local Checks (Pre-commit)
-
-```shell
-git add .
-uvx pre-commit autoupdate
-uvx pre-commit run --all-files
-```
-
-## Build and Serve Docs
+Build and serve docs:
 
 ```shell
 uv run mkdocs build --strict
 uv run mkdocs serve
 ```
+
+Save progress as needed:
+
+```shell
+git add -A
+# If pre-commit makes changes, re-run `git add -A` before committing.
+git commit -m "update"
+git push -u origin main
+```
+
 
 ## Annotations
 

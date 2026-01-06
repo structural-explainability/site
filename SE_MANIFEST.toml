@@ -1,0 +1,65 @@
+# ============================================================
+# SE_MANIFEST.toml (Repository Intent, Scope, and Role)
+# ============================================================
+
+schema = "se-manifest-1"
+schema_url = "https://github.com/structural-explainability/spec-se/blob/main/manifests/se-manifest-1.md"
+
+[meta]
+# Non-normative contextual information
+framework = "Structural Explainability"
+framework_url = "https://github.com/structural-explainability"
+framework_note = "Provides definitions and conventions for SE_MANIFEST semantics."
+description = "Declarative claim of repository intent, scope, and role."
+purpose = "To make explicit the boundaries, responsibilities, and expectations of this repository relative to others."
+
+[repo]
+name = "site"
+org  = "structural-explainability"
+kind = "documentation"
+status = "public"
+since = "2025"
+summary = "Public-facing documentation site for Structural Explainability."
+
+[layer]
+space = "SE"
+role  = "infrastructure"
+
+[depends]
+required = []
+optional = [
+  "mkdocs",
+  "mkdocs-material",
+  "python"
+]
+
+[provides]
+artifacts = [
+  "README.md",
+  "mkdocs.yml",
+  "docs/",
+  "SE_MANIFEST.toml"
+]
+
+[scope]
+includes = [
+  "public documentation",
+  "navigation and presentation of SE specifications",
+  "non-normative explanatory material",
+  "links to canonical specifications and repositories"
+]
+excludes = [
+  "normative specification definitions",
+  "formal constraints or invariants",
+  "conformance requirements",
+  "interpretive or evaluative claims",
+  "implementation logic"
+]
+
+[citation]
+cff = "CITATION.cff"
+preferred = "repo"
+bib_hint = "case2025-se-site"
+
+[traceability]
+identifier_map = "none"
