@@ -2,6 +2,8 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](./LICENSE)
 [![Deploy Docs](https://github.com/structural-explainability/site/actions/workflows/deploy-docs.yml/badge.svg?branch=main)](https://github.com/structural-explainability/site/actions/workflows/deploy-docs.yml)
+![Build Status](https://github.com/structural-explainability/site/actions/workflows/ci-hygiene-mkdocs.yml/badge.svg?branch=main)
+[![Check Links](https://github.com/structural-explainability/site/actions/workflows/links.yml/badge.svg)](https://github.com/structural-explainability/site/actions/workflows/links.yml)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/structural-explainability/site/security/dependabot)
 
 > Documentation site for Structural Explainability.
@@ -18,16 +20,11 @@ Initialize once:
 ```shell
 uv self update
 uv python pin 3.12
-uvx pre-commit install
-uvx pre-commit run --all-files
-
-# Windows:
-.venv\Scripts\activate
-
-# macOS/Linux:
-# source .venv/bin/activate
-
 uv sync --extra dev --extra docs --upgrade
+
+uvx pre-commit install
+git add -A
+uvx pre-commit run --all-files
 ```
 
 Build and serve docs:

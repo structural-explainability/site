@@ -1,31 +1,40 @@
-# .github/workflows/deploy-docs.yml
-name: Docs Deploy (MkDocs Python)
-
+# ============================================================
+# .github/workflows/deploy-docs.yml (Deploy MkDocs)
+# ============================================================
+# SOURCE: https://github.com/denisecase/templates
 # WHY: Build and deploy documentation to GitHub Pages on pushes to main.
 # REQ: Repo Settings -> Pages -> Build and deployment -> Source:
 #      Deploy from a branch, Branch = gh-pages, Folder = /.
 
+name: Docs Deploy (MkDocs Python)
+
+# WHY: Deploy project documentation on pushes to main branch.
+
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [main] # WHY: Run when pushing to main branch.
+  workflow_dispatch: # WHY: Allow manual triggering from Actions tab.
 
 permissions:
   contents: write # WHY: Required to push to gh-pages
 
 env:
-  PYTHONUNBUFFERED: "1"
-  PYTHONIOENCODING: "utf-8"
+  PYTHONUNBUFFERED: "1" # WHY: Real-time logging.
+  PYTHONIOENCODING: "utf-8" # WHY: Ensure UTF-8 encoding for international characters.
 
 jobs:
   docs:
+    name: Deploy MkDocs documentation site
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 30 # WHY: Prevent hanging jobs. If over, it is likely stuck.
 
     steps:
-      # === ASSEMBLE ===
+      # ============================================================
+      # ASSEMBLE: Get code and set up environment
+      # ============================================================
 
-      - name: A1) Checkout
+      - name: A1) Checkout repository code
+        # WHY: Needed to access files for checks.
         uses: actions/checkout@v6
 
       - name: A2) Install uv (with caching)
@@ -33,16 +42,10 @@ jobs:
         with:
           enable-cache: true
 
-      - name: A3) Pin Python version for consistency
-        run: uv python pin 3.12
+      - name: A3) Install Python version 3.12
+        run: uv python install 3.12
 
-      - name: A4) Display versions
-        run: |
-          python --version
-          uv --version
-          uv pip list | head -n 50
-
-      - name: A5) Sync to install dependencies
+      - name: A4) Sync to install dependencies
         run: uv sync --extra dev --extra docs --upgrade
 
       # === BASELINE CHECKS ===

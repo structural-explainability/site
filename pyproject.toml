@@ -1,3 +1,10 @@
+# ============================================================
+# pyproject.toml (Python and MkDocs project configuration)
+# ============================================================
+
+# REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
+# WHY: Centralizes project configuration.
+
 [project]
 name = "structural-explainability-site"
 version = "0.0.0"
